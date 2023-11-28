@@ -1,0 +1,19 @@
+{
+    "chroma": {
+        "collectionName": "collection_name",
+        "url": "http://localhost:8000"
+    },
+    "textSplitter": {
+        "chunkSize": 100,
+        "chunkOverlap": 50
+    },
+    "inference": {
+        "apiKey": "-",
+        "temperature": 1.0,
+        "maxTokens": 50,
+        "model": "-"
+    },
+    "inferenceEmbeddings": {
+        "apiKey": "-"
+    }
+}
