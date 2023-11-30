@@ -24,6 +24,16 @@ qna.answer("How much is the total cost of the invoice ?")
 })
 ```
 
+if you want run with `javascript` run this folowing command in your command line;
+
+```sh
+    npm run build
+``` 
+
+And you will see in your directory a dist folder. Now you will run this project with `javascript`.
+
+> Note: Don't forget the import changes. You should import from `dist` folder.  
+
 ## Config File
 The sample configuration file is included in the library. You can see the default content of the config file below.
 

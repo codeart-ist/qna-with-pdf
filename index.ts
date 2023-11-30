@@ -1,3 +1,4 @@
+import * as fs from 'fs';
 import { RetrievalQAChain } from "langchain/chains"
 import { Document } from "langchain/dist/document"
 import { Embeddings } from "langchain/dist/embeddings/base"
@@ -120,11 +121,20 @@ export class QNAWithPDF {
      * @returns {Promise<QNAWithPDF>}
      */
     async init(pdfPath: string): Promise<QNAWithPDF> {
-        const pdfDocuments = await this.loadPDFFlie(pdfPath);
-        const records = await this.processPDFFile(pdfDocuments);
-        await this.createAChromaDB(records);
-        await this.generateLLM();
+        try {
 
-        return this;
+            if(!fs.existsSync(pdfPath)) {
+                throw new Error(`Check the pdf location. location = ${pdfPath}`)
+            }
+
+            const pdfDocuments = await this.loadPDFFlie(pdfPath);
+            const records = await this.processPDFFile(pdfDocuments);
+            await this.createAChromaDB(records);
+            await this.generateLLM();
+            return this;
+        } catch (e: any) {
+            throw new Error(e);
+        }
+
     }
 }
