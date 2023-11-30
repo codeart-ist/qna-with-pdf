@@ -6,21 +6,21 @@ import { HuggingFaceInferenceEmbeddings } from "langchain/embeddings/hf"
 import { HuggingFaceInference } from "langchain/llms/hf"
 import { RecursiveCharacterTextSplitter } from "langchain/text_splitter"
 import { Chroma } from "langchain/vectorstores/chroma"
-import { ChatWithPDFConfig } from "./types/config"
+import { QNAWithPDFConfig } from "./types/config"
 import { ConfigGenerate } from "./helpers/config.helper"
 
 
-export class ChatWithPDF {
+export class QNAWithPDF {
 
-    config: ChatWithPDFConfig;
+    config: QNAWithPDFConfig;
     embeddings: Embeddings;
-    textSplitter: RecursiveCharacterTextSplitter;
+    private textSplitter: RecursiveCharacterTextSplitter;
     chromaDB: Chroma;
     chain: RetrievalQAChain
 
     constructor(configFilePath: string) {
         this._precheck(configFilePath)
-            .then((config: ChatWithPDFConfig) => {
+            .then((config: QNAWithPDFConfig) => {
                 this.config = config;
                 this.embeddings = new HuggingFaceInferenceEmbeddings(this.config.inferenceEmbeddings);
                 this.textSplitter = new RecursiveCharacterTextSplitter(this.config.textSplitter);
@@ -32,9 +32,9 @@ export class ChatWithPDF {
     /**
      * Load config file or run any pre process function
      * 
-     * @returns {Promise<ChatWithPDFConfig>}
+     * @returns {Promise<QNAWithPDFConfig>}
      */
-    _precheck(configFilePath: string): Promise<ChatWithPDFConfig> {
+    _precheck(configFilePath: string): Promise<QNAWithPDFConfig> {
         return new Promise((resolve, reject) => {
             try {
                 const generatedConfig = new ConfigGenerate(configFilePath);
@@ -114,12 +114,12 @@ export class ChatWithPDF {
     }
 
     /**
-     * Chat with pdf initialization;
+     * QNA with pdf initialization;
      * 
      * @param {string} pdfPath
-     * @returns {Promise<ChatWithPDF>}
+     * @returns {Promise<QNAWithPDF>}
      */
-    async init(pdfPath: string): Promise<ChatWithPDF> {
+    async init(pdfPath: string): Promise<QNAWithPDF> {
         const pdfDocuments = await this.loadPDFFlie(pdfPath);
         const records = await this.processPDFFile(pdfDocuments);
         await this.createAChromaDB(records);

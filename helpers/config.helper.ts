@@ -1,12 +1,12 @@
 import * as fs from 'fs'
-import { ChatWithPDFConfig } from "../types/config";
+import { QNAWithPDFConfig } from "../types/config";
 
 /**
- * Generate a config file for chat with pdf class
+ * Generate a config file for QNAWithPDF class
  */
 export class ConfigGenerate {
 
-    config: ChatWithPDFConfig;
+    config: QNAWithPDFConfig;
 
     constructor(configPath: string) {
         try {

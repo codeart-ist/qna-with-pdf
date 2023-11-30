@@ -5,7 +5,7 @@ import { RecursiveCharacterTextSplitterParams } from "langchain/text_splitter"
 import { ChromaLibArgs } from "langchain/vectorstores/chroma"
 
 
-export type ChatWithPDFConfig = {
+export type QNAWithPDFConfig = {
     chroma: ChromaLibArgs;
     textSplitter?: Partial<RecursiveCharacterTextSplitterParams>;
     inference?: (Partial<HFInput> & BaseLLMParams);

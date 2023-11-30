@@ -1,11 +1,61 @@
 # QNA With PDF
-Now you can chat with your pdf files.
+Now you can qna with your pdf files.
+
+## Example Usage
+
+Sample code is as follows.
+
+```js
+const { QNAWithPDF } = require('./') 
+// or ES6 remove the comment 
+// import { QNAWithPDF } from './index.js'
+
+const QNAWithPDF = new QNAWithPDF('./config.json');
+
+qnaWithPDF.init('./invoice.pdf').then(qna => {
+
+qna.answer("How much is the total cost of the invoice ?")
+    .then(result => {
+        return result; // You will see the result here.
+    })
+    .catch(e => {
+        throw new Error(e);
+    })
+})
+```
+
+## Config File
+The sample configuration file is included in the library. You can see the default content of the config file below.
+
+```json
+    {
+    "chroma": {
+        "collectionName": "collection_name", // ! change your chroma collection name
+        "url": "http://localhost:8000" // ! change your chroma server url
+    },
+    "textSplitter": { // text splitter initial values
+        "chunkSize": 100,
+        "chunkOverlap": 50
+    },
+    "inference": { // HuggingFaceInference Class initial values
+        "apiKey": "-", // hugging face api key
+        "temperature": 1.0,
+        "maxTokens": 50,
+        "model": "-" // provide a model in hugging face api key 
+    },
+    "inferenceEmbeddings": { // HuggingFaceInferenceEmbeddings initial values
+        "apiKey": "-" // provide a hugging face api key
+    }
+}
+```
+
+>You can find the model that suits you on [Hugging Face](https://huggingface.co/models?pipeline_tag=text-generation&sort=trending).
 
 ## Dependencies
 
 ### Pyhton
 
-You have python version >= 3.11.6 
+You should have python version >= 3.11.6 
 
 ### Chroma DB
 
@@ -26,7 +76,6 @@ and follow this command
 last step
 
 ```sh
-
     #if your location equals to db path you can write and run only chroma run
     chroma run --path /db_path
 ```
@@ -34,7 +83,7 @@ last step
 For more informations <a href="https://docs.trychroma.com/">click here. </a>
 
 
-### Hugging Face
+###  Hugging Face
 You must have a hugging face access token. And you must add to access token for `config.json` file.
 
 

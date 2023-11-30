@@ -3,3 +3,5 @@ package-lock.json
 
 # prod
 dist
+chroma_data
+chroma.log
