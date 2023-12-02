@@ -40,8 +40,8 @@ The sample configuration file is included in the library. You can see the defaul
 ```json
     {
     "chroma": {
-        "collectionName": "collection_name", // ! change your chroma collection name
-        "url": "http://localhost:8000" // ! change your chroma server url
+        "collectionName": "collection_name", // change your chroma collection name
+        "url": "http://localhost:8000" // change your chroma server url
     },
     "textSplitter": { // text splitter initial values
         "chunkSize": 100,
@@ -51,7 +51,7 @@ The sample configuration file is included in the library. You can see the defaul
         "apiKey": "-", // hugging face api key
         "temperature": 1.0,
         "maxTokens": 50,
-        "model": "-" // provide a model in hugging face api key 
+        "model": "-" // provide a model in hugging face 
     },
     "inferenceEmbeddings": { // HuggingFaceInferenceEmbeddings initial values
         "apiKey": "-" // provide a hugging face api key
