@@ -99,3 +99,8 @@ You must have a hugging face access token. And you must add to access token for 
 
 ## Suggestions
 Please make sure you provide the fields in the config file content. 
+
+## Next Features
+- [ ] Multiple PDF support
+- [ ] Memory support
+- [ ] Less dependency and modularity
