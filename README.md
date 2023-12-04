@@ -10,7 +10,7 @@ const { QNAWithPDF } = require('./')
 // or ES6 remove the comment 
 // import { QNAWithPDF } from './index.js'
 
-const QNAWithPDF = new QNAWithPDF('./config.json');
+const qnaWithPDF = new QNAWithPDF('./config.json');
 
 qnaWithPDF.init('./invoice.pdf').then(qna => {
     qna.answer("How much is the total cost of the invoice ?")
