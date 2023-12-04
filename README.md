@@ -13,14 +13,13 @@ const { QNAWithPDF } = require('./')
 const QNAWithPDF = new QNAWithPDF('./config.json');
 
 qnaWithPDF.init('./invoice.pdf').then(qna => {
-
-qna.answer("How much is the total cost of the invoice ?")
-    .then(result => {
-        return result; // You will see the result here.
-    })
-    .catch(e => {
-        throw new Error(e);
-    })
+    qna.answer("How much is the total cost of the invoice ?")
+        .then(result => {
+            return result; // You will see the result here.
+        })
+        .catch(e => {
+            throw new Error(e);
+        })
 })
 ```
 
